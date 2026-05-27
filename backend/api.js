@@ -4,7 +4,7 @@ const app = express()
 app.use(express.json())
 const allowed_origin = process.env.FRONTEND_URL || 'http://localhost:5173'
 app.use(cors({origin : allowed_origin}))
-
+const PORT = process.env.PORT || 5000
 
 let idc = 1
 const acts = [{name:'puffing', id:1, done:true}]
@@ -37,4 +37,4 @@ app.post('/acts', addAct)
 app.delete('/acts/:id', deleteAct)
 app.patch('/acts/:id', toggleAct)
 
-app.listen(5173, '0.0.0.0', () => console.log('acts listening on port 5173'))
+app.listen(PORT, '0.0.0.0', () => console.log(`acts listening on port ${PORT}`))
